@@ -1,10 +1,10 @@
 import sqlite3
 
-# Connect to SQLite database (it will be created if it doesn't exist)
+
 conn = sqlite3.connect("contacts.db")
 cursor = conn.cursor()
 
-# Create the table if it doesn't exist
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS contacts (
     name TEXT PRIMARY KEY,
@@ -59,7 +59,7 @@ while True:
             print(" Contact with this name already exists.\n")
 
     elif choice == 2:
-        search_name = input("🔍 Enter the name to search: ")
+        search_name = input(" Enter the name to search: ")
         cursor.execute("SELECT * FROM contacts WHERE name = ?", (search_name,))
         result = cursor.fetchone()
         if result:
@@ -113,11 +113,10 @@ while True:
             print(" Contact not found.\n")
 
     elif choice == 6:
-        print("👋 Exiting Contact Book. Goodbye!")
+        print(" Exiting Contact Book. Goodbye!")
         break
 
     else:
         print(" Please choose a number between 1 and 6.\n")
 
-# Close connection when the program exits
 conn.close()
